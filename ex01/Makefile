@@ -6,7 +6,7 @@ CC = c++
 
 SRC_DIR = ./src
 
-SRCS := main.cpp Bureaucrat.cpp
+SRCS := main.cpp Bureaucrat.cpp Form.cpp
 
 OBJ_DIR = ./objs
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

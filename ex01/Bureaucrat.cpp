@@ -6,11 +6,13 @@
 /*   By: gmontoro <gmontoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 20:31:42 by gmontoro          #+#    #+#             */
-/*   Updated: 2025/04/13 20:31:45 by gmontoro         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:51:29 by gmontoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
+class Form;
 
 //************* CONSTRUCTOR/DESTRUCTOR*******************
 Bureaucrat::Bureaucrat():name("Defaultino"){
@@ -33,7 +35,7 @@ Bureaucrat::Bureaucrat(int n):name("Defaultino"){
 	}
 }
 
-Bureaucrat::Bureaucrat(std::string &na, int n):name(na){
+Bureaucrat::Bureaucrat(std::string na, int n):name(na){
 	std::cout << "Bureaucrat full constructor" << std::endl;
 	try{
 		this->setGrade(n);
@@ -108,11 +110,15 @@ void Bureaucrat::decrementGrade(){
 	}
 }
 
+void Bureaucrat::signForm(Form &f){
+	f.beSigned(*this);
+}
+
 //*************EXCEPTIONS*******************
 const char *Bureaucrat::GradeTooHighException::what() const throw(){
-	return ("Grade too high\n");
+	return ("Buro: Grade too high\n");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw(){
-	return ("Grade too low\n");
+	return ("Buro: Grade too low\n");
 }
